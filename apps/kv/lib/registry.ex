@@ -10,7 +10,6 @@ defmodule KV.Registry do
   """
   def start_link(opts) do
     # 1. Pass the name to GenServer's init
-    IO.puts("KV.Registry.start_link ran")
     server = Keyword.fetch!(opts, :name)
     GenServer.start_link(__MODULE__, server, opts)
   end
@@ -39,7 +38,6 @@ defmodule KV.Registry do
 
   @impl true
   def init(table) do
-    IO.puts("KV.Registry init cb ran")
     # 3. We have replaced the names map by the ETS table
     names = :ets.new(table, [:named_table, read_concurrency: true])
     refs = %{}

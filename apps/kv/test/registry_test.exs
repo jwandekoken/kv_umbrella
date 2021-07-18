@@ -46,6 +46,6 @@ defmodule KV.RegistryTest do
     Agent.stop(bucket, :shutdown)
 
     # Now trying to call the dead process causes a :noproc exit
-    catch_exit KV.Bucket.put(bucket, "milk", 3)
+    catch_exit(KV.Bucket.put(bucket, "milk", 3))
   end
 end
